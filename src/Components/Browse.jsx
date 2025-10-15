@@ -1,7 +1,16 @@
+import Header from "./Header"
+import useNowPlayingMovies from "../Hooks/useNowPlayingMovies"
+import MainContainer from "./MainContainer";
+
 function Browse(){
+
+    useNowPlayingMovies();
+  
+
     return(
         <>
-        <h1>Browse</h1>
+        <Header/>
+        <MainContainer/>
         </>
     )
 }
