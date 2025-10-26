@@ -15,10 +15,11 @@ function MainContainer(){
     
     return(
         <>
-        
+        <div className="overflow-x-hidden">
         <VideoTitle title={title} overview={overview}/>
         <VideoBackground movieId={id}/>
         <SecondaryContainer/>
+        </div>
         </>
     )
 

@@ -1,18 +1,28 @@
 import usePopularMovies from "../Hooks/usePopularMovies";
-import { API_OPTIONS } from "../Utils/Constant";
-import { useSelector } from "react-redux";
 import MovieList from "./MovieList";
+import { useSelector } from "react-redux";
+import useTopRatedMovies from "../Hooks/useTopRatedMovies";
+import useUpcomingMovies from "../Hooks/useUpcomingMovies";
 
 function SecondaryContainer() {
 usePopularMovies();
-
-const popularmovies =  useSelector((store)=> store.movies?.popularMovies)
-console.log("Popular Movies in Secondary Container: ", popularmovies);
+useTopRatedMovies();
+useUpcomingMovies();
+const popularMovies = useSelector((store)=> store.movies?.popularMovies);
+const nowPlayingMovies = useSelector((store)=> store?.movies?.nowPlayingMovies)
+const topRatedMovies = useSelector((store)=> store?.movies?.topRatedMovies);
+const upcomingMovies = useSelector((store)=> store?.movies?.upcomingMovies);
+console.log("Popular Movies in SecondaryContainer: ", upcomingMovies);
 
 return (
     <>
-        <div>
-            <MovieList />
+        <div className="bg-black ">
+        <div className="-mt-52  relative z-20">
+            <MovieList title="Now Playing" movies={nowPlayingMovies}/>
+            <MovieList title="Popular Movies" movies={popularMovies}/>
+            <MovieList title="Top Rated" movies={topRatedMovies}/>
+            <MovieList title="Upcoming" movies={upcomingMovies}/>
+        </div>
         </div>
     </>
 )
